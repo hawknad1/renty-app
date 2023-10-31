@@ -4,6 +4,9 @@ import Zona from "next/font/local";
 import "./globals.css";
 import Header from "@/components/Header";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import ClientProvider from "@/components/ClientProvider";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/auth";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -15,24 +18,28 @@ export const metadata: Metadata = {
   description: "Buy, Sell and Rent a property today",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={poppins.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <Header />
-          {children}
-        </ThemeProvider>
-      </body>
-    </html>
+    <ClientProvider>
+      <html lang="en">
+        <body className={poppins.className}>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <Header />
+            <div className="h-screen bg-[#f8f8f8] dark:filter dark:bg-gray-900">
+              {children}
+            </div>
+          </ThemeProvider>
+        </body>
+      </html>
+    </ClientProvider>
   );
 }

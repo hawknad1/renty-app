@@ -1,5 +1,7 @@
+import HomeCard from "@/components/HomeCard";
+
 function page() {
-  return <div>page</div>;
+  return <div>Hello world</div>;
 }
 
 export default page;
