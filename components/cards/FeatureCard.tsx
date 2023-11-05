@@ -5,18 +5,15 @@ import { Separator } from "../ui/separator";
 import { StarIcon, UsersIcon } from "@heroicons/react/24/solid";
 import { usePathname, useRouter } from "next/navigation";
 
-interface SmallCardProps {
+interface FeatureCardProps {
   data: any;
 }
 
-const SmallCard: React.FC<SmallCardProps> = ({ data }) => {
+const FeatureCard: React.FC<FeatureCardProps> = ({ data }) => {
   const router = useRouter();
   const pathname = usePathname();
   return (
-    <div
-      // onClick={() => router.push(`/${pathname}/${data.id}`)}
-      className="bg-white border border-slate-200 flex flex-col cursor-pointer items-center overflow-hidden rounded-lg w-[310px] h-[300px] xl:w-[300px] xl:h-[290px]  hover:shadow-sm hover:scale-105 ease-out transform transition duration-300 "
-    >
+    <div className="bg-white border border-slate-200 flex flex-col cursor-pointer items-center overflow-hidden rounded-lg w-[310px] h-[300px] xl:w-[300px] xl:h-[290px]  hover:shadow-sm hover:scale-105 ease-out transform transition duration-300 ">
       <Image
         src={data?.image}
         alt="Image of a House"
@@ -67,5 +64,4 @@ const SmallCard: React.FC<SmallCardProps> = ({ data }) => {
     </div>
   );
 };
-
-export default SmallCard;
+export default FeatureCard;
